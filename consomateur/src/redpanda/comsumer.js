@@ -1,10 +1,9 @@
 const { Kafka } = require('kafkajs');
 const redis = require('redis');
 
-// Créer une connexion au serveur Redis
+
 const client = redis.createClient();
 
-// Fonction pour incrémenter le compteur d'un mot dans Redis
 function incrementWordCount(mot) {
     client.incr(mot, (err, reply) => {
         if (err) {
@@ -36,10 +35,10 @@ async function connexion() {
                 timestamp: new Date(message.timestamp).toLocaleString()
             });
 
-            // Découpage du message en mots
+
             const mots = messageValue.split(/\s+/);
             mots.forEach(mot => {
-                incrementWordCount(mot.toLowerCase()); // Convertit en minuscules pour normaliser
+                incrementWordCount(mot.toLowerCase()); 
             });
         },
     });
