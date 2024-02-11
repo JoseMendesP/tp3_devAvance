@@ -16,7 +16,6 @@ function incrementWordCount(mot) {
 
 async function connexion() {
     const redpanda = new Kafka({
-        clientId: 'le-J',
         brokers: ['localhost:19092'],
     });
 
